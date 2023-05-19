@@ -1,10 +1,10 @@
 import PhotosContainer from "@/containers/Photos";
 import Layouts from "@/layouts";
 
-export default function Home() {
+export default function Favorite() {
   return (
     <Layouts>
-      <PhotosContainer />
+      <PhotosContainer type="favorite" />
     </Layouts>
   );
 }
