@@ -149,11 +149,8 @@ export default function PhotosContainer({ type }: IPhotoContainer) {
                 title={photo.title}
                 photo={photo?.thumb}
                 author={photo?.author}
-                onFavorite={
-                  isFavoritePage
-                    ? () => handleDeleteFavorite(photo.id)
-                    : () => handleFavorite(photo)
-                }
+                onFavorite={() => handleFavorite(photo)}
+                onUnFavorited={() => handleDeleteFavorite(photo.id)}
                 isFavorited={getIsFavorited(photo.id)}
                 isFavoritePage={isFavoritePage}
                 onClick={() => handleClickPhoto(i)}
