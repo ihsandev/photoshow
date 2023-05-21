@@ -10,7 +10,7 @@ interface Ilayouts {
 
 export default function Layouts({ children }: Ilayouts) {
   return (
-    <main className={`${inter.className}`}>
+    <main className={`${inter.className} text-slate-950`}>
       <Header />
       {children}
     </main>
