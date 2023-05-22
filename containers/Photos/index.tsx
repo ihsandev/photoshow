@@ -23,7 +23,9 @@ export default function PhotosContainer({ type }: IPhotoContainer) {
   const newPhotos: any = isFavoritePage ? state.favorites : state.photos;
 
   useEffect(() => {
-    getPhotosList();
+    if (!isFavoritePage) {
+      getPhotosList();
+    }
   }, [keyword, page]);
 
   useEffect(() => {
@@ -133,13 +135,15 @@ export default function PhotosContainer({ type }: IPhotoContainer) {
 
   return (
     <section className="container mx-auto mt-3 mb-8 px-2 md:px-0">
-      <div className="mb-6">
-        <input
-          placeholder="Cari Photo.."
-          onChange={handleSearch}
-          className="w-full text-xl outline-none px-2 py-4 border-b-stone-200 border-b-2"
-        />
-      </div>
+      {!isFavoritePage && (
+        <div className="mb-6">
+          <input
+            placeholder="Cari Photo.."
+            onChange={handleSearch}
+            className="w-full text-xl outline-none px-2 py-4 border-b-stone-200 border-b-2"
+          />
+        </div>
+      )}
       {newPhotos?.length > 0 ? (
         <div className={`flex flex-wrap gap-6`}>
           <>
