@@ -133,6 +133,14 @@ export default function PhotosContainer({ type }: IPhotoContainer) {
     setIsShowImage(true);
   };
 
+  const Loading = (
+    <div className={`flex flex-wrap gap-6 mt-4 w-full`}>
+      {[...new Array(5)].map((_, i) => (
+        <Skeleton key={i} className="w-full md:w-[18.7%] h-[380px]" />
+      ))}
+    </div>
+  );
+
   return (
     <section className="container mx-auto mt-3 mb-8 px-2 md:px-0">
       {!isFavoritePage && (
@@ -166,22 +174,16 @@ export default function PhotosContainer({ type }: IPhotoContainer) {
         </div>
       ) : (
         <>
-          {!loading && (
+          {loading ? (
+            Loading
+          ) : (
             <div className="flex justify-center">
               <h1 className="text-2xl text-slate-500">Data Not Found</h1>
             </div>
           )}
         </>
       )}
-
-      {loading && (
-        <div className={`flex flex-wrap gap-6 mt-4`}>
-          {[...new Array(5)].map((_, i) => (
-            <Skeleton key={i} className="w-[18.7%] h-[380px]" />
-          ))}
-        </div>
-      )}
-
+      {loading && Loading}
       <Lightbox
         photo={newPhotos[indexSelected]?.full_image}
         show={isShowImage}
